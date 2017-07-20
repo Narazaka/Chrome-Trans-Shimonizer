@@ -66,8 +66,10 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
     private ﾀーｹﾞｯﾂ = ['div', 'h1', 'h2','h3','h4', 'dd', 'p', 'b', 'a', 'span', 'em', 'strong'];
     private ｾﾚｸﾀー: string;
     private ｼﾓﾅｲｻﾞﾌﾞﾙ: boolean;
+    private 糞林檎化: boolean;
     private ｵﾌﾟﾁｵﾝ = {
-        ｼﾓﾅｲｽﾞ: true
+        ｼﾓﾅｲｽﾞ: true,
+        糞林檎: false
     };
 
     constructor() {
@@ -81,8 +83,9 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
     }
 
     private ｲﾆｼｬﾗｲｽﾞ() {
-       this.ｼﾓ = new ｼﾓﾅｲｻﾞー();
+        this.ｼﾓ = new ｼﾓﾅｲｻﾞー();
         this.ｾﾚｸﾀー = this.ﾀーｹﾞｯﾂ.join(',');
+        
         this.偉い人 = new MutationObserver((ﾐｭーﾚｺ: MutationRecord []) =>
         {
             if (ﾐｭーﾚｺ.length === 0) {
@@ -105,12 +108,16 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
             if (変.ｼﾓﾅｲｽﾞ) {
                 this.ｼﾓﾅｲｻﾞﾌﾞﾙ = 変.ｼﾓﾅｲｽﾞ.newValue;
             }
+            if (変.糞林檎) {
+                this.糞林檎化 = 変.糞林檎.newValue;
+            }            
         });
     }
 
     private ｾｯﾃｨー(ﾃﾞﾌｫ, 鰆) {
         chrome.storage.local.get(ﾃﾞﾌｫ, (ぁ) => {
             this.ｼﾓﾅｲｻﾞﾌﾞﾙ = ぁ.ｼﾓﾅｲｽﾞ;
+            this.糞林檎化 = ぁ.糞林檎;
             if (鰆) {
                 鰆();
             }
@@ -124,6 +131,28 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
             childList: true,
             subtree: true
         });
+    }
+
+    private 銭ｹﾞﾊﾞ糞林檎化(元: string) : string {
+        let 鮭 = "";
+        let 異国語 = new RegExp(/[a-zA-Z][a-zA-Z0-9_\s\-_.,]+/g);        
+        let ま = 異国語.exec(元);
+        if (null === ま) {
+            return 元;
+        }
+        let 差分 = 0;
+        do {
+            鮭 += 元.substr(差分, ま.index - 差分);
+            鮭 += "k";
+            for (let x of ま[0].split(/[\s\-_.,]+/)) {
+                鮭 += x.charAt(0).toUpperCase();
+                鮭 += x.toLowerCase().substr(1);
+            }
+            //ret += "&lt;検閲済&gt;"
+            差分 = ま[0].length + ま.index;
+        } while((ま = 異国語.exec(元)) !== null);
+
+        return 鮭;
     }
 
     private ｼﾓﾅｲｽﾞ(ﾌｫﾄｼｮｯﾌﾟ) {
@@ -147,8 +176,12 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
             return (this.nodeType === 3);
         })
         .html(function () {
-            let html = ぉ(this);
-            return html.replaceWith(ﾊﾞｯｷﾝｶﾞﾑ.ｼﾓ.ｼﾓﾅｲｽﾞ(html.text()));
+            let 鳩 = ぉ(this);
+            let 加工済 = ﾊﾞｯｷﾝｶﾞﾑ.ｼﾓ.ｼﾓﾅｲｽﾞ(鳩.text());
+            if (ﾊﾞｯｷﾝｶﾞﾑ.糞林檎化) {
+                加工済 = ﾊﾞｯｷﾝｶﾞﾑ.銭ｹﾞﾊﾞ糞林檎化(加工済);
+            }
+            return 鳩.replaceWith(加工済);
         });
         this.ｵﾌﾞｲｪーｸﾄ();
     }
