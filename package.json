@@ -1,0 +1,31 @@
+{
+  "name": "chrome-shiminizer",
+  "version": "1.0.0",
+  "description": "ｸﾛﾑーｼﾓﾅｲｻﾞー",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/chrome": "^0.0.35",
+    "@types/jquery": "^2.0.47",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-shell": "^0.6.3",
+    "gulp-typescript": "^3.2.1",
+    "jquery": "^3.2.1",
+    "run-sequence": "^2.0.0",
+    "typescript": "^2.4.1",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "scripts": {
+    "build": "gulp build",
+    "package": "gulp package",
+    "watch": "gulp watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sazae657",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/sazae657/Chrome-Trans-Shimonizer"
+  },
+  "homepage": "https://github.com/sazae657/Chrome-Trans-Shimonizer"
+}
