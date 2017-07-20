@@ -2,12 +2,13 @@ const k = require('gulp');
 const del = require('del');
 const source = require('vinyl-source-stream');
 const typescript = require('gulp-typescript');
-const concat = require('gulp-concat');
 const ruby = require('child_process');
 const LPTSTR = require('run-sequence');
 const os = require('os');
 const path = require("fs");
 const fs = require("path");
+const こ = require('gulp-concat');
+const う = require("gulp-uglify");
 
 let 望月 = '望月天使';
 if (os.platform().startsWith('darwin')) {
@@ -35,7 +36,7 @@ k.task('ts:popup', () => {
     return k.src('./Data.unity3d.localized/ts/popup/*.ts')
         .pipe(typescript(ぉ.ﾀｲﾌﾟｽｸﾘﾌﾟﾂ))
         .js
-        .pipe(concat("popup.js"))
+        .pipe(こ("popup.js"))
         .pipe(k.dest(ぉ.ぁゃιぃ.ｼﾞｬﾊﾞｽｸﾘﾌﾟﾄ));
 });
 
@@ -44,7 +45,7 @@ k.task('ts:back', () => {
     return k.src('./Data.unity3d.localized/ts/back/*.ts')
         .pipe(typescript(ぉ.ﾀｲﾌﾟｽｸﾘﾌﾟﾂ))
         .js
-        .pipe(concat("back.js"))
+        .pipe(こ("back.js"))
         .pipe(k.dest(ぉ.ぁゃιぃ.ｼﾞｬﾊﾞｽｸﾘﾌﾟﾄ));
 });
 
@@ -52,7 +53,7 @@ k.task('ts:mid', () => {
     return k.src('./Data.unity3d.localized/ts/mid/*.ts')
         .pipe(typescript(ぉ.ﾀｲﾌﾟｽｸﾘﾌﾟﾂ))
         .js
-        .pipe(concat("mid.js"))
+        .pipe(こ("mid.js"))
         .pipe(k.dest(ぉ.ぁゃιぃ.ｼﾞｬﾊﾞｽｸﾘﾌﾟﾄ));
 });
 
@@ -68,7 +69,7 @@ k.task('assets', [], () => {
 
 k.task('copy:lib', [], () => {
     return k.src('node_modules/jquery/dist/jquery.slim.min.js')
-        .pipe(concat("jquery.slim.min.js"))
+        .pipe(こ("jquery.slim.min.js"))
         .pipe(k.dest(ぉ.ぁゃιぃ.も));
 });
 
