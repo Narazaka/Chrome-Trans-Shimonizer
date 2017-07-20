@@ -162,7 +162,7 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
     }
 
     private ﾚーﾙｽﾞｨーｻﾞｲｽﾞｨーｽﾞ(ｽﾄﾘﾝｸﾞｽﾞ: string): string { // 頑張るならTinySegmenterやkuromoji.jsを導入したい
-        return ｽﾄﾘﾝｸﾞｽﾞ.replace(/([a-zA-Z])(?:\b|(?=[^a-zA-Z0-9\u00C0-\u00FF]))|([ァ-ヵー]+)/g, "$1es");
+        return ｽﾄﾘﾝｸﾞｽﾞ.replace(/([a-zA-Z](?:\b|(?=[^a-zA-Z0-9\u00C0-\u00FF]))|[ァ-ヵー]+)/g, "$1es");
     }
 
     private ｼﾓﾅｲｽﾞ(ﾌｫﾄｼｮｯﾌﾟ) {
