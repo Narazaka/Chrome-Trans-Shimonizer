@@ -5,27 +5,37 @@
 const ｲｴーｸﾄ = () => {
     let ｵﾌﾟﾁｵﾝ = {
         ｼﾓﾅｲｽﾞ: true,
-        糞林檎: false
+        糞林檎: false,
+        ﾚーﾙｽﾞ: false
     };
     console.log("ｲｴーｸﾄ");
     chrome.storage.local.get(ｵﾌﾟﾁｵﾝ, (お) => {
         $('#emp').prop('checked', お.ｼﾓﾅｲｽﾞ);
         $('#k').prop('checked', お.糞林檎);
+        $('#rail').prop('checked', お.ﾚーﾙｽﾞ);
     });
-    $('#emp').change(function() {       
-        const checked = $(this).is(':checked');        
+    $('#emp').change(function() {
+        const checked = $(this).is(':checked');
 		const object = {
 	        ｼﾓﾅｲｽﾞ: checked
         };
 		chrome.storage.local.set(object, ()=>{});
-    });    
-    
-    $('#k').change(function() {       
-        const checked = $(this).is(':checked');        
+    });
+
+    $('#k').change(function() {
+        const checked = $(this).is(':checked');
 		const object = {
 	        糞林檎: checked
         };
 		chrome.storage.local.set(object, ()=>{});
-	});     
+    });
+
+    $('#rail').change(function() {
+        const checked = $(this).is(':checked');
+		const object = {
+	        ﾚーﾙｽﾞ: checked
+        };
+		chrome.storage.local.set(object, ()=>{});
+	});
 }
 $(()=>{ｲｴーｸﾄ()});

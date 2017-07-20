@@ -67,9 +67,11 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
     private ｾﾚｸﾀー: string;
     private ｼﾓﾅｲｻﾞﾌﾞﾙ: boolean;
     private 糞林檎化: boolean;
+    private ﾚーﾙｽﾞｨーｽﾞ: boolean;
     private ｵﾌﾟﾁｵﾝ = {
         ｼﾓﾅｲｽﾞ: true,
-        糞林檎: false
+        糞林檎: false,
+        ﾚーﾙｽﾞ: false
     };
 
     constructor() {
@@ -111,6 +113,9 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
             if (変.糞林檎) {
                 this.糞林檎化 = 変.糞林檎.newValue;
             }
+            if (変.ﾚーﾙｽﾞ) {
+                this.ﾚーﾙｽﾞｨーｽﾞ = 変.ﾚーﾙｽﾞ.newValue;
+            }
         });
     }
 
@@ -118,6 +123,7 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
         chrome.storage.local.get(ﾃﾞﾌｫ, (ぁ) => {
             this.ｼﾓﾅｲｻﾞﾌﾞﾙ = ぁ.ｼﾓﾅｲｽﾞ;
             this.糞林檎化 = ぁ.糞林檎;
+            this.ﾚーﾙｽﾞｨーｽﾞ = ぁ.ﾚーﾙｽﾞ;
             if (鰆) {
                 鰆();
             }
@@ -155,6 +161,10 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
         return 鮭;
     }
 
+    private ﾚーﾙｽﾞｨーｻﾞｲｽﾞｨーｽﾞ(ｽﾄﾘﾝｸﾞｽﾞ: string): string { // 頑張るならTinySegmenterやkuromoji.jsを導入したい
+        return ｽﾄﾘﾝｸﾞｽﾞ.replace(/([a-zA-Z])(?:\b|(?=[^a-zA-Z0-9\u00C0-\u00FF]))|([ァ-ヵー]+)/g, "$1es");
+    }
+
     private ｼﾓﾅｲｽﾞ(ﾌｫﾄｼｮｯﾌﾟ) {
         if (! this.ｼﾓﾅｲｻﾞﾌﾞﾙ) {
             return;
@@ -177,7 +187,11 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
         })
         .html(function () {
             let 鳩 = ぉ(this);
-            let 加工済 = ﾊﾞｯｷﾝｶﾞﾑ.ｼﾓ.ｼﾓﾅｲｽﾞ(鳩.text());
+            let 加工済 = 鳩.text();
+            if (ﾊﾞｯｷﾝｶﾞﾑ.ﾚーﾙｽﾞｨーｽﾞ) {
+                加工済 = ﾊﾞｯｷﾝｶﾞﾑ.ﾚーﾙｽﾞｨーｻﾞｲｽﾞｨーｽﾞ(加工済);
+            }
+            加工済 = ﾊﾞｯｷﾝｶﾞﾑ.ｼﾓ.ｼﾓﾅｲｽﾞ(加工済);
             if (ﾊﾞｯｷﾝｶﾞﾑ.糞林檎化) {
                 加工済 = ﾊﾞｯｷﾝｶﾞﾑ.銭ｹﾞﾊﾞ糞林檎化(加工済);
             }
