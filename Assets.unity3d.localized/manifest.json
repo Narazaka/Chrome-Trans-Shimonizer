@@ -7,7 +7,7 @@
   "permissions": [
     "http://*/*",
     "https://*/*",
-    "storage"    
+    "storage"
   ],
   "icons" : {
     "128": "icon.png"

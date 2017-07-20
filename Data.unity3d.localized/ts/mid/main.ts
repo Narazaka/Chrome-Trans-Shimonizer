@@ -63,15 +63,20 @@ class ｼﾓﾅｲｻﾞー {
 class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
     private 偉い人: MutationObserver;
     private ｼﾓ: ｼﾓﾅｲｻﾞー;
-    private ﾀーｹﾞｯﾂ = ['div', 'h1', 'h2','h3','h4', 'dd', 'p', 'b', 'a', 'span', 'em', 'strong'];
+    private ﾀーｹﾞｯﾂ =
+        ['div', 'h1', 'h2','h3','h4', 'dt', 'dd',
+            'p', 'b', 'a', 'span', 'em', 'strong', 'code',
+            'li', 'ul', 'blockquote', 'label'];
     private ｾﾚｸﾀー: string;
     private ｼﾓﾅｲｻﾞﾌﾞﾙ: boolean;
     private 糞林檎化: boolean;
     private ﾚーﾙｽﾞｨーｽﾞ: boolean;
+    private ゆゆﾅｲｽﾞ: boolean;
     private ｵﾌﾟﾁｵﾝ = {
         ｼﾓﾅｲｽﾞ: true,
         糞林檎: false,
-        ﾚーﾙｽﾞ: false
+        ﾚーﾙｽﾞ: false,
+        ゆゆゆ: false
     };
 
     constructor() {
@@ -93,9 +98,9 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
             if (ﾐｭーﾚｺ.length === 0) {
                 return;
             }
-            console.log("ｼﾓﾅｲｽﾞ:" + ﾐｭーﾚｺ.length);
+            //console.log("ｼﾓﾅｲｽﾞ:" + ﾐｭーﾚｺ.length);
             const 差分 = ﾐｭーﾚｺ.reduce((過去, 今) => {
-                return 過去.concat(new Array(今.addedNodes));
+                return 過去.concat(今.addedNodes);
             }, []);
 
             if (差分.length === 0) {
@@ -116,6 +121,9 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
             if (変.ﾚーﾙｽﾞ) {
                 this.ﾚーﾙｽﾞｨーｽﾞ = 変.ﾚーﾙｽﾞ.newValue;
             }
+            if (変.ゆゆゆ) {
+                this.ゆゆﾅｲｽﾞ = 変.ゆゆゆ.newValue;
+            }
         });
     }
 
@@ -124,6 +132,7 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
             this.ｼﾓﾅｲｻﾞﾌﾞﾙ = ぁ.ｼﾓﾅｲｽﾞ;
             this.糞林檎化 = ぁ.糞林檎;
             this.ﾚーﾙｽﾞｨーｽﾞ = ぁ.ﾚーﾙｽﾞ;
+            this.ゆゆﾅｲｽﾞ = ぁ.ゆゆゆ;
             if (鰆) {
                 鰆();
             }
@@ -154,11 +163,14 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
                 鮭 += x.charAt(0).toUpperCase();
                 鮭 += x.toLowerCase().substr(1);
             }
-            //ret += "&lt;検閲済&gt;"
             差分 = ま[0].length + ま.index;
         } while((ま = 異国語.exec(元)) !== null);
 
         return 鮭;
+    }
+
+    private ゆゆ式(元: string) : string {
+        return 元.replace(/([a-zA-Z][a-zA-Z0-9]+|ゆ)/g, "ゆゆ式");
     }
 
     private ﾚーﾙｽﾞｨーｻﾞｲｽﾞｨーｽﾞ(ｽﾄﾘﾝｸﾞｽﾞ: string): string { // 頑張るならTinySegmenterやkuromoji.jsを導入したい
@@ -188,6 +200,9 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
         .html(function () {
             let 鳩 = ぉ(this);
             let 加工済 = ﾊﾞｯｷﾝｶﾞﾑ.ｼﾓ.ｼﾓﾅｲｽﾞ(鳩.text());
+            if (ﾊﾞｯｷﾝｶﾞﾑ.ゆゆﾅｲｽﾞ) {
+                加工済 = ﾊﾞｯｷﾝｶﾞﾑ.ゆゆ式(加工済);
+            }
             if (ﾊﾞｯｷﾝｶﾞﾑ.糞林檎化) {
                 加工済 = ﾊﾞｯｷﾝｶﾞﾑ.銭ｹﾞﾊﾞ糞林檎化(加工済);
             }
