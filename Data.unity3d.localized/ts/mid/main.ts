@@ -33,9 +33,9 @@ class ｼﾓﾅｲｻﾞー {
     public ｼﾓﾅｲｽﾞ(ｼﾓﾅｲｽﾞﾃｷｽﾄ: string): string {
         for (var ｼ in this.ｼﾓﾅｲｽﾞﾃーﾌﾞﾙ) {
             if(ｼﾓﾅｲｽﾞﾃｷｽﾄ.indexOf(ｼ) >=0) {
-               do{
+                do{
                     ｼﾓﾅｲｽﾞﾃｷｽﾄ = ｼﾓﾅｲｽﾞﾃｷｽﾄ.replace(ｼ, this.ｼﾓﾅｲｽﾞﾃーﾌﾞﾙ[ｼ]);
-               }while(ｼﾓﾅｲｽﾞﾃｷｽﾄ.indexOf(ｼ) >= 0);
+                }while(ｼﾓﾅｲｽﾞﾃｷｽﾄ.indexOf(ｼ) >= 0);
             }
         }
         return ｼﾓﾅｲｽﾞﾃｷｽﾄ;
@@ -85,7 +85,7 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
     private ｲﾆｼｬﾗｲｽﾞ() {
         this.ｼﾓ = new ｼﾓﾅｲｻﾞー();
         this.ｾﾚｸﾀー = this.ﾀーｹﾞｯﾂ.join(',');
-        
+
         this.偉い人 = new MutationObserver((ﾐｭーﾚｺ: MutationRecord []) =>
         {
             if (ﾐｭーﾚｺ.length === 0) {
@@ -110,7 +110,7 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
             }
             if (変.糞林檎) {
                 this.糞林檎化 = 変.糞林檎.newValue;
-            }            
+            }
         });
     }
 
@@ -135,7 +135,7 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
 
     private 銭ｹﾞﾊﾞ糞林檎化(元: string) : string {
         let 鮭 = "";
-        let 異国語 = new RegExp(/[a-zA-Z][a-zA-Z0-9_\s\-_.,]+/g);        
+        let 異国語 = new RegExp(/[a-zA-Z][a-zA-Z0-9_\s\-_.,]+/g);
         let ま = 異国語.exec(元);
         if (null === ま) {
             return 元;
