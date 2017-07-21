@@ -11,7 +11,12 @@ export class 原色 {
 
     奈良公園: 鹿大量[] = [
         new 鹿大量(/(ポニテ|ポニーテール)/g, "リボンポニテ"),
-        new 鹿大量(/何/g, "伺")
+        new 鹿大量(/何/g, "伺"),
+        new 鹿大量(/([Mm]ac|[Aa]pple|i([Pp]hone|[Pp]ad))/g, "ｸｿ"),
+        new 鹿大量(/(です|ます)/g, "なので"),
+        new 鹿大量(/[!！]+/g, "（ぉ"),
+        new 鹿大量(/ようこそ/g, "ようこそようこ"),
+        new 鹿大量(/Zen([Ff]one|[Pp]ad)(\s+)?[28]([\.0-9]+)?/g, "ｲﾝﾃﾙｱﾝﾖﾖｲﾖ")
     ];
 
     constructor() {
@@ -27,7 +32,7 @@ export class 原色 {
         do {
             鮭 += 元.substr(差分, ま.index - 差分);
             鮭 += 置換;
-            差分 = 置換.length + ま.index;
+            差分 =　ま[0].length + ま.index;
         } while((ま = 正規.exec(元)) !== null);
         鮭 += 元.substr(差分);
         
