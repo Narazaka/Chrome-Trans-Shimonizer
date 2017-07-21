@@ -11,6 +11,7 @@ const こ = require('gulp-rename');
 const う = require("gulp-uglify");
 const 圧 = require("webpack-stream");
 const 圧力 = require('./webpack.config.js');
+const ｸﾛﾑー = require("crx");
 
 let 望月 = '望月天使';
 if (os.platform().startsWith('darwin')) {
@@ -81,7 +82,9 @@ k.task('_watch', () => {
     ['assets']);
 });
 
-k.task('package', ['build'], ()=> {
+k.task('package', [], ()=> {
+    del(`${ぉ.ぁゃιぃ.上}.crx`);
+    del(`${ぉ.ぁゃιぃ.上}.pem`);
     const CHROMES = [
         "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe",
         "C:/Program Files/Google/Chrome/Application/chrome.exe",
@@ -126,7 +129,19 @@ k.task('package', ['build'], ()=> {
     cap.on('close', (code) => {
         console.log(`child process exited with code ${code}`);
     });
+});
 
+k.task('crx', [], ()=> {
+    console.log("も");
+    const c = new ｸﾛﾑー({
+        privateKey: path.readFileSync('望月天使.pem')
+    });
+    c.load(fs.resolve(ぉ.ぁゃιぃ.上))
+    .then(crx => crx.pack())
+    .then(crxBuffer => {
+        console.log("done");
+        path.writeFile("望月天使.crx", crxBuffer);
+    });
 });
 
 k.task('build', ['assets', 'copy:lib', 'ts:popup', 'ts:back', 'ts:mid']);
