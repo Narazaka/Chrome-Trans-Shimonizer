@@ -1,0 +1,3 @@
+[submodule "Store.unity3d.localized/Shimonizer"]
+	path = Store.unity3d.localized/Shimonizer
+	url = git@github.com:sazae657/Shimonizer.git

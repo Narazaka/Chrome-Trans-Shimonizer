@@ -3,10 +3,11 @@
         "target": "ES5",
         "module": "commonjs",
         "noImplicitAny": false,
+        "sourceMap": true,
         "baseUrl": "."
     },
     "exclude": [
         "node_modules"
-    ]    
+    ]
 }
 

@@ -7,8 +7,10 @@ const LPTSTR = require('run-sequence');
 const os = require('os');
 const path = require("fs");
 const fs = require("path");
-const こ = require('gulp-concat');
+const こ = require('gulp-rename');
 const う = require("gulp-uglify");
+const 圧 = require("webpack-stream");
+const 圧力 = require('./webpack.config.js');
 
 let 望月 = '望月天使';
 if (os.platform().startsWith('darwin')) {
@@ -20,11 +22,6 @@ function ccsf(format) {
 }
 
 const ぉ = {
-    ﾀｲﾌﾟｽｸﾘﾌﾟﾂ: {
-        target: "ES5",
-        noImplicitAny: false,
-        removeComments: true
-    },
     ぁゃιぃ: {
         上: `./${望月}`,
         ｼﾞｬﾊﾞｽｸﾘﾌﾟﾄ: `./${望月}/js`,
@@ -33,26 +30,22 @@ const ぉ = {
 };
 
 k.task('ts:popup', () => {
-    return k.src('./Data.unity3d.localized/ts/popup/*.ts')
-        .pipe(typescript(ぉ.ﾀｲﾌﾟｽｸﾘﾌﾟﾂ))
-        .js
+    return k.src('./Data.unity3d.localized/ts/popup/popup.ts')
+        .pipe(圧(圧力))
         .pipe(こ("popup.js"))
         .pipe(k.dest(ぉ.ぁゃιぃ.ｼﾞｬﾊﾞｽｸﾘﾌﾟﾄ));
 });
 
-
 k.task('ts:back', () => {
-    return k.src('./Data.unity3d.localized/ts/back/*.ts')
-        .pipe(typescript(ぉ.ﾀｲﾌﾟｽｸﾘﾌﾟﾂ))
-        .js
+    return k.src('./Data.unity3d.localized/ts/back/back.ts')
+        .pipe(圧(圧力))
         .pipe(こ("back.js"))
         .pipe(k.dest(ぉ.ぁゃιぃ.ｼﾞｬﾊﾞｽｸﾘﾌﾟﾄ));
 });
 
 k.task('ts:mid', () => {
-    return k.src('./Data.unity3d.localized/ts/mid/*.ts')
-        .pipe(typescript(ぉ.ﾀｲﾌﾟｽｸﾘﾌﾟﾂ))
-        .js
+    return k.src('./Data.unity3d.localized/ts/mid/main.ts')
+        .pipe(圧(圧力))
         .pipe(こ("mid.js"))
         .pipe(k.dest(ぉ.ぁゃιぃ.ｼﾞｬﾊﾞｽｸﾘﾌﾟﾄ));
 });
@@ -88,7 +81,7 @@ k.task('_watch', () => {
     ['assets']);
 });
 
-k.task('package', [], ()=> {
+k.task('package', ['build'], ()=> {
     const CHROMES = [
         "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe",
         "C:/Program Files/Google/Chrome/Application/chrome.exe",
