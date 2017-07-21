@@ -9,7 +9,7 @@ const path = require("fs");
 const fs = require("path");
 const こ = require('gulp-rename');
 const う = require("gulp-uglify");
-const 圧 = require('gulp-webpack');
+const 圧 = require("webpack-stream");
 const 圧力 = require('./webpack.config.js');
 
 let 望月 = '望月天使';
@@ -81,7 +81,7 @@ k.task('_watch', () => {
     ['assets']);
 });
 
-k.task('package', [], ()=> {
+k.task('package', ['build'], ()=> {
     const CHROMES = [
         "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe",
         "C:/Program Files/Google/Chrome/Application/chrome.exe",

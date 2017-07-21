@@ -3,25 +3,39 @@
 'use strict';
 
 import {ｼﾓﾅｲｻﾞー} from '../../../Store.unity3d.localized/Shimonizer/porting/js/Shimonizer';
-
+import {林檎ﾕﾆｺーﾄﾞ} from './UTF'
+import {原色} from './Primary';
 const ぉ = $;
 class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
     private 偉い人: MutationObserver;
     private ｼﾓ: ｼﾓﾅｲｻﾞー;
+    private ﾕﾆｺーﾄﾞ: 林檎ﾕﾆｺーﾄﾞ;
+    private 奈良公園: 原色;
+
     private ﾀーｹﾞｯﾂ =
-        ['div', 'h1', 'h2','h3','h4', 'dt', 'dd',
+            ['div', 'h1', 'h2','h3','h4', 'dt', 'dd',
+            'th','td',
             'p', 'b', 'a', 'span', 'em', 'strong', 'code',
             'li', 'ul', 'blockquote', 'label'];
     private ｾﾚｸﾀー: string;
+
+    // ↓ 構造体か何かにしたい
+    private ｲﾈーﾎﾞー: boolean;
     private ｼﾓﾅｲｻﾞﾌﾞﾙ: boolean;
     private 糞林檎化: boolean;
+    private ﾕﾆｺーﾄﾞ化: boolean;
     private ﾚーﾙｽﾞｨーｽﾞ: boolean;
     private ゆゆﾅｲｽﾞ: boolean;
+    private 原色化: boolean;
+
     private ｵﾌﾟﾁｵﾝ = {
+        ｲﾈーﾎﾞー: true,
         ｼﾓﾅｲｽﾞ: true,
         糞林檎: false,
+        ﾕﾆｺーﾄﾞ化: false,
         ﾚーﾙｽﾞ: false,
-        ゆゆゆ: false
+        ゆゆゆ: false,
+        原色: false
     };
 
     constructor() {
@@ -36,6 +50,9 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
 
     private ｲﾆｼｬﾗｲｽﾞ() {
         this.ｼﾓ = new ｼﾓﾅｲｻﾞー();
+        this.ﾕﾆｺーﾄﾞ = new 林檎ﾕﾆｺーﾄﾞ();
+        this.奈良公園 = new 原色();
+
         this.ｾﾚｸﾀー = this.ﾀーｹﾞｯﾂ.join(',');
 
         this.偉い人 = new MutationObserver((ﾐｭーﾚｺ: MutationRecord []) =>
@@ -57,6 +74,12 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
             if (縄張 !== 'local') {
                 return;
             }
+            if (変.ｲﾈーﾎﾞー) {
+                this.ｲﾈーﾎﾞー = 変.ｲﾈーﾎﾞー.newValue;
+            }            
+            if (変.ﾕﾆｺーﾄﾞ化) {
+                this.ﾕﾆｺーﾄﾞ化 = 変.ﾕﾆｺーﾄﾞ化.newValue;
+            }            
             if (変.ｼﾓﾅｲｽﾞ) {
                 this.ｼﾓﾅｲｻﾞﾌﾞﾙ = 変.ｼﾓﾅｲｽﾞ.newValue;
             }
@@ -69,15 +92,21 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
             if (変.ゆゆゆ) {
                 this.ゆゆﾅｲｽﾞ = 変.ゆゆゆ.newValue;
             }
+            if (変.原色) {
+                this.原色化 = 変.原色.newValue;
+            }
         });
     }
 
     private ｾｯﾃｨー(ﾃﾞﾌｫ, 鰆) {
         chrome.storage.local.get(ﾃﾞﾌｫ, (ぁ) => {
+            this.ｲﾈーﾎﾞー = ぁ.ｲﾈーﾎﾞー;
             this.ｼﾓﾅｲｻﾞﾌﾞﾙ = ぁ.ｼﾓﾅｲｽﾞ;
             this.糞林檎化 = ぁ.糞林檎;
             this.ﾚーﾙｽﾞｨーｽﾞ = ぁ.ﾚーﾙｽﾞ;
             this.ゆゆﾅｲｽﾞ = ぁ.ゆゆゆ;
+            this.ﾕﾆｺーﾄﾞ化 = ぁ.ﾕﾆｺーﾄﾞ化;
+            this.原色化 = ぁ.原色;
             if (鰆) {
                 鰆();
             }
@@ -110,6 +139,7 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
             }
             差分 = ま[0].length + ま.index;
         } while((ま = 異国語.exec(元)) !== null);
+        鮭 += 元.substr(差分);
 
         return 鮭;
     }
@@ -123,7 +153,7 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
     }
 
     private ｼﾓﾅｲｽﾞ(ﾌｫﾄｼｮｯﾌﾟ) {
-        if (! this.ｼﾓﾅｲｻﾞﾌﾞﾙ) {
+        if (! this.ｲﾈーﾎﾞー) {
             return;
         }
 
@@ -144,16 +174,30 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
         })
         .html(function () {
             let 鳩 = ぉ(this);
-            let 加工済 = ﾊﾞｯｷﾝｶﾞﾑ.ｼﾓ.ｼﾓﾅｲｽﾞ(鳩.text());
+            let 加工済 = 鳩.text(); 
+
             if (ﾊﾞｯｷﾝｶﾞﾑ.ゆゆﾅｲｽﾞ) {
                 加工済 = ﾊﾞｯｷﾝｶﾞﾑ.ゆゆ式(加工済);
             }
+
+            if (ﾊﾞｯｷﾝｶﾞﾑ.原色化) {
+                加工済 = ﾊﾞｯｷﾝｶﾞﾑ.奈良公園.変換(加工済);
+            }  
+            
+            if (ﾊﾞｯｷﾝｶﾞﾑ.ﾕﾆｺーﾄﾞ化) {
+                加工済 = ﾊﾞｯｷﾝｶﾞﾑ.ﾕﾆｺーﾄﾞ.変換(加工済);
+            }            
+            
             if (ﾊﾞｯｷﾝｶﾞﾑ.糞林檎化) {
                 加工済 = ﾊﾞｯｷﾝｶﾞﾑ.銭ｹﾞﾊﾞ糞林檎化(加工済);
             }
             if (ﾊﾞｯｷﾝｶﾞﾑ.ﾚーﾙｽﾞｨーｽﾞ) {
                 加工済 = ﾊﾞｯｷﾝｶﾞﾑ.ﾚーﾙｽﾞｨーｻﾞｲｽﾞｨーｽﾞ(加工済);
             }
+
+            if (ﾊﾞｯｷﾝｶﾞﾑ.ｼﾓﾅｲｻﾞﾌﾞﾙ) {
+                加工済 = ﾊﾞｯｷﾝｶﾞﾑ.ｼﾓ.ｼﾓﾅｲｽﾞ(加工済);
+            }            
             return 鳩.replaceWith(加工済);
         });
         this.ｵﾌﾞｲｪーｸﾄ();
