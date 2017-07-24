@@ -1,0 +1,14 @@
+sudo: required
+dist: 望月天使
+language: node_js
+node_js:
+  - "7"
+
+before_install:
+  - "npm -g install npm@latest"
+
+before_script:
+  - "npm install"
+
+script:
+  - "npm run build --ぉ"
