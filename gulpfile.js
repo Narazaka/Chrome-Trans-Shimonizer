@@ -12,6 +12,16 @@ const う = require("gulp-uglify");
 const 圧 = require("webpack-stream");
 const 圧力 = require('./webpack.config.js');
 const ｸﾛﾑー = require("crx");
+const もし = require("gulp-if");
+const うぐぅ = require("gulp-uglify");
+const 匙 = require("minimist");
+
+const 引数 = 匙(process.argv.slice(2));
+let 圧縮 = false;
+if (引数.ぉ) {
+    console.log("--- 圧 ---");
+    圧縮 = true;
+}
 
 let 望月 = '望月天使';
 if (os.platform().startsWith('darwin')) {
@@ -33,6 +43,7 @@ const ぉ = {
 k.task('ts:popup', () => {
     return k.src('./Data.unity3d.localized/ts/popup/popup.ts')
         .pipe(圧(圧力))
+        .pipe(もし(圧縮,うぐぅ()))
         .pipe(こ("popup.js"))
         .pipe(k.dest(ぉ.ぁゃιぃ.ｼﾞｬﾊﾞｽｸﾘﾌﾟﾄ));
 });
@@ -40,6 +51,7 @@ k.task('ts:popup', () => {
 k.task('ts:back', () => {
     return k.src('./Data.unity3d.localized/ts/back/back.ts')
         .pipe(圧(圧力))
+        .pipe(もし(圧縮,うぐぅ()))
         .pipe(こ("back.js"))
         .pipe(k.dest(ぉ.ぁゃιぃ.ｼﾞｬﾊﾞｽｸﾘﾌﾟﾄ));
 });
@@ -47,6 +59,7 @@ k.task('ts:back', () => {
 k.task('ts:mid', () => {
     return k.src('./Data.unity3d.localized/ts/mid/main.ts')
         .pipe(圧(圧力))
+        .pipe(もし(圧縮,うぐぅ()))
         .pipe(こ("mid.js"))
         .pipe(k.dest(ぉ.ぁゃιぃ.ｼﾞｬﾊﾞｽｸﾘﾌﾟﾄ));
 });

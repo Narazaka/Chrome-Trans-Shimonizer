@@ -21,6 +21,13 @@ const ｲｴーｸﾄ = () => {
         $('#yyy').prop('checked', お.ゆゆゆ);
         $('#mac').prop('checked', お.ﾕﾆｺーﾄﾞ化);
         $('#primary').prop('checked', お.原色);
+
+        if (!お.ｲﾈーﾎﾞー) {
+            $('#java input').prop('disabled', true);
+        }
+        else {
+            $('#java input').prop('disabled', false);
+        }
     });
 
     $('#enum').change(function() {
@@ -69,21 +76,21 @@ const ｲｴーｸﾄ = () => {
         };
 		chrome.storage.local.set(object, ()=>{});
     });
-    
+
     $('#mac').change(function() {
         const checked = $(this).is(':checked');
 		const object = {
 	        ﾕﾆｺーﾄﾞ化: checked
         };
 		chrome.storage.local.set(object, ()=>{});
-    });    
-    
+    });
+
     $('#primary').change(function() {
         const checked = $(this).is(':checked');
 		const object = {
 	        原色: checked
         };
 		chrome.storage.local.set(object, ()=>{});
-	})    
+	})
 }
 $(()=>{ｲｴーｸﾄ()});

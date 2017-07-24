@@ -5,6 +5,8 @@
 import {ｼﾓﾅｲｻﾞー} from '../../../Store.unity3d.localized/Shimonizer/porting/js/Shimonizer';
 import {林檎ﾕﾆｺーﾄﾞ} from './UTF'
 import {原色} from './Primary';
+import {革新的でまったく新しいアッと驚く機能} from './Apple';
+
 const ぉ = $;
 class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
     private 偉い人: MutationObserver;
@@ -76,10 +78,10 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
             }
             if (変.ｲﾈーﾎﾞー) {
                 this.ｲﾈーﾎﾞー = 変.ｲﾈーﾎﾞー.newValue;
-            }            
+            }
             if (変.ﾕﾆｺーﾄﾞ化) {
                 this.ﾕﾆｺーﾄﾞ化 = 変.ﾕﾆｺーﾄﾞ化.newValue;
-            }            
+            }
             if (変.ｼﾓﾅｲｽﾞ) {
                 this.ｼﾓﾅｲｻﾞﾌﾞﾙ = 変.ｼﾓﾅｲｽﾞ.newValue;
             }
@@ -122,27 +124,6 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
         });
     }
 
-    private 銭ｹﾞﾊﾞ糞林檎化(元: string) : string {
-        let 鮭 = "";
-        let 異国語 = new RegExp(/[a-zA-Z][a-zA-Z0-9_\s\-_.,]+/g);
-        let ま = 異国語.exec(元);
-        if (null === ま) {
-            return 元;
-        }
-        let 差分 = 0;
-        do {
-            鮭 += 元.substr(差分, ま.index - 差分);
-            鮭 += "k";
-            for (let x of ま[0].split(/[\s\-_.,]+/)) {
-                鮭 += x.charAt(0).toUpperCase();
-                鮭 += x.toLowerCase().substr(1);
-            }
-            差分 = ま[0].length + ま.index;
-        } while((ま = 異国語.exec(元)) !== null);
-        鮭 += 元.substr(差分);
-
-        return 鮭;
-    }
 
     private ゆゆ式(元: string) : string {
         return 元.replace(/([a-zA-Z][a-zA-Z0-9]+|ゆ)/g, "ゆゆ式");
@@ -174,7 +155,7 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
         })
         .html(function () {
             let 鳩 = ぉ(this);
-            let 加工済 = 鳩.text(); 
+            let 加工済 = 鳩.text();
 
             if (ﾊﾞｯｷﾝｶﾞﾑ.ゆゆﾅｲｽﾞ) {
                 加工済 = ﾊﾞｯｷﾝｶﾞﾑ.ゆゆ式(加工済);
@@ -182,10 +163,10 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
 
             if (ﾊﾞｯｷﾝｶﾞﾑ.原色化) {
                 加工済 = ﾊﾞｯｷﾝｶﾞﾑ.奈良公園.変換(加工済);
-            }  
+            }
 
             if (ﾊﾞｯｷﾝｶﾞﾑ.糞林檎化) {
-                加工済 = ﾊﾞｯｷﾝｶﾞﾑ.銭ｹﾞﾊﾞ糞林檎化(加工済);
+                加工済 = 革新的でまったく新しいアッと驚く機能.実現(加工済);
             }
             if (ﾊﾞｯｷﾝｶﾞﾑ.ﾚーﾙｽﾞｨーｽﾞ) {
                 加工済 = ﾊﾞｯｷﾝｶﾞﾑ.ﾚーﾙｽﾞｨーｻﾞｲｽﾞｨーｽﾞ(加工済);
@@ -193,11 +174,11 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
 
             if (ﾊﾞｯｷﾝｶﾞﾑ.ﾕﾆｺーﾄﾞ化) {
                 加工済 = ﾊﾞｯｷﾝｶﾞﾑ.ﾕﾆｺーﾄﾞ.変換(加工済);
-            }            
+            }
 
             if (ﾊﾞｯｷﾝｶﾞﾑ.ｼﾓﾅｲｻﾞﾌﾞﾙ) {
                 加工済 = ﾊﾞｯｷﾝｶﾞﾑ.ｼﾓ.ｼﾓﾅｲｽﾞ(加工済);
-            }            
+            }
             return 鳩.replaceWith(加工済);
         });
         this.ｵﾌﾞｲｪーｸﾄ();
