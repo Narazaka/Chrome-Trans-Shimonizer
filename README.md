@@ -1,5 +1,7 @@
 # ｸﾛﾑーﾄﾗﾝｽｼﾓﾅｲｻﾞー
 
+[![Build Status](https://travis-ci.org/sazae657/Chrome-Trans-Shimonizer.svg?branch=master)](https://travis-ci.org/sazae657/Chrome-Trans-Shimonizer)
+
 ## びるど
 ```
 PS:> npm install
