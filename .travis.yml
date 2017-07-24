@@ -1,14 +1,19 @@
 sudo: required
 dist: 望月天使
 language: node_js
+
 node_js:
   - "7"
+git:
+    submodules: false
 
 before_install:
-  - "npm -g install npm@latest"
+  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+  - git submodule update --init --recursive
+  - npm -g install npm@latest
 
 before_script:
-  - "npm install"
+  - npm install
 
 script:
-  - "npm run build --ぉ"
+  - npm run build --ぉ
