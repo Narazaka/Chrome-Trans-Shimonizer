@@ -15,7 +15,8 @@ const ｸﾛﾑー = require("crx");
 const もし = require("gulp-if");
 const うぐぅ = require("gulp-uglify");
 const 匙 = require("minimist");
-const plumber = require('gulp-plumber');
+const 鉛 = require('gulp-plumber');
+const じ = require('gulp-zip');
 
 const 引数 = 匙(process.argv.slice(2));
 let 圧縮 = false;
@@ -23,6 +24,7 @@ if (引数.ぉ) {
     console.log("--- 圧 ---");
     圧縮 = true;
 }
+let 魚 = false;
 
 let 望月 = '望月天使';
 if (os.platform().startsWith('darwin')) {
@@ -43,27 +45,27 @@ const ぉ = {
 
 k.task('ts:popup', () => {
     return k.src('./Data.unity3d.localized/ts/popup/popup.ts')
-        .pipe(plumber())
+        .pipe(もし(魚, 鉛()))
         .pipe(圧(圧力))
-        .pipe(もし(圧縮,うぐぅ()))
+        .pipe(もし(圧縮, うぐぅ()))
         .pipe(こ("popup.js"))
         .pipe(k.dest(ぉ.ぁゃιぃ.ｼﾞｬﾊﾞｽｸﾘﾌﾟﾄ));
 });
 
 k.task('ts:back', () => {
     return k.src('./Data.unity3d.localized/ts/back/back.ts')
-        .pipe(plumber())
+        .pipe(もし(魚, 鉛()))
         .pipe(圧(圧力))
-        .pipe(もし(圧縮,うぐぅ()))
+        .pipe(もし(圧縮, うぐぅ()))
         .pipe(こ("back.js"))
         .pipe(k.dest(ぉ.ぁゃιぃ.ｼﾞｬﾊﾞｽｸﾘﾌﾟﾄ));
 });
 
 k.task('ts:mid', () => {
     return k.src('./Data.unity3d.localized/ts/mid/main.ts')
-        .pipe(plumber())
+        .pipe(もし(魚, 鉛()))
         .pipe(圧(圧力))
-        .pipe(もし(圧縮,うぐぅ()))
+        .pipe(もし(圧縮, うぐぅ()))
         .pipe(こ("mid.js"))
         .pipe(k.dest(ぉ.ぁゃιぃ.ｼﾞｬﾊﾞｽｸﾘﾌﾟﾄ));
 });
@@ -86,18 +88,18 @@ k.task('copy:lib', [], () => {
 });
 
 k.task('_watch', () => {
-  k.watch(
-    [ccsf('./Data.unity3d.localized/ts/mid/*.ts')],
-   ['ts:mid']);
-  k.watch(
-    [ccsf('./Data.unity3d.localized/ts/back/*.ts')],
-    ['ts:back']);
-  k.watch(
-    [ccsf('./Data.unity3d.localized/ts/popup/*.ts')],
-    ['ts:popup']);
-  k.watch(
-    [ccsf('./Assets.unity3d.localized/**/*')],
-    ['assets']);
+    k.watch(
+        [ccsf('./Data.unity3d.localized/ts/mid/*.ts')],
+    ['ts:mid']);
+    k.watch(
+        [ccsf('./Data.unity3d.localized/ts/back/*.ts')],
+        ['ts:back']);
+    k.watch(
+        [ccsf('./Data.unity3d.localized/ts/popup/*.ts')],
+        ['ts:popup']);
+    k.watch(
+        [ccsf('./Assets.unity3d.localized/**/*')],
+        ['assets']);
 });
 
 k.task('_package', [], ()=> {
@@ -149,17 +151,11 @@ k.task('_package', [], ()=> {
     });
 });
 
-k.task('crx', [], ()=> {
+k.task('zip', [], ()=> {
     console.log("も");
-    const c = new ｸﾛﾑー({
-        privateKey: path.readFileSync('望月天使.pem')
-    });
-    c.load(fs.resolve(ぉ.ぁゃιぃ.上))
-    .then(crx => crx.pack())
-    .then(crxBuffer => {
-        console.log("done");
-        path.writeFile("望月天使.crx", crxBuffer);
-    });
+    return k.src(`${ぉ.ぁゃιぃ.上}/**`, {base: ぉ.ぁゃιぃ.上})
+        .pipe(じ(`${望月}.zip`))
+        .pipe(k.dest('./'));
 });
 
 k.task('build', ['assets', 'copy:lib', 'ts:popup', 'ts:back', 'ts:mid']);
@@ -169,10 +165,11 @@ k.task('clean', [], () => {
 });
 
 k.task('package', (dome) => {
-    return LPTSTR('clean', 'build', '_package',dome);
+    return LPTSTR('clean', 'build', '_package', 'zip', dome);
 });
 
 k.task('watch', (dome) => {
+    魚 = true;
     return LPTSTR('build', '_watch',dome);
   }
 );
