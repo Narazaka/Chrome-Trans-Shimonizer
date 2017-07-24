@@ -26,7 +26,7 @@
   },
   "scripts": {
     "build": "gulp build",
-    "package": "gulp package",
+    "package": "gulp package --ぉ",
     "watch": "gulp watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

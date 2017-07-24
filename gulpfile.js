@@ -95,7 +95,7 @@ k.task('_watch', () => {
     ['assets']);
 });
 
-k.task('package', [], ()=> {
+k.task('_package', [], ()=> {
     del(`${ぉ.ぁゃιぃ.上}.crx`);
     del(`${ぉ.ぁゃιぃ.上}.pem`);
     const CHROMES = [
@@ -161,6 +161,10 @@ k.task('build', ['assets', 'copy:lib', 'ts:popup', 'ts:back', 'ts:mid']);
 
 k.task('clean', [], () => {
     return del(ぉ.ぁゃιぃ.上);
+});
+
+k.task('package', (dome) => {
+    return LPTSTR('clean', 'build', '_package',dome);
 });
 
 k.task('watch', (dome) => {
