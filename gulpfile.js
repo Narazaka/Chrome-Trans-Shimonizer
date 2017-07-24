@@ -15,6 +15,7 @@ const ｸﾛﾑー = require("crx");
 const もし = require("gulp-if");
 const うぐぅ = require("gulp-uglify");
 const 匙 = require("minimist");
+const plumber = require('gulp-plumber');
 
 const 引数 = 匙(process.argv.slice(2));
 let 圧縮 = false;
@@ -42,6 +43,7 @@ const ぉ = {
 
 k.task('ts:popup', () => {
     return k.src('./Data.unity3d.localized/ts/popup/popup.ts')
+        .pipe(plumber())
         .pipe(圧(圧力))
         .pipe(もし(圧縮,うぐぅ()))
         .pipe(こ("popup.js"))
@@ -50,6 +52,7 @@ k.task('ts:popup', () => {
 
 k.task('ts:back', () => {
     return k.src('./Data.unity3d.localized/ts/back/back.ts')
+        .pipe(plumber())
         .pipe(圧(圧力))
         .pipe(もし(圧縮,うぐぅ()))
         .pipe(こ("back.js"))
@@ -58,6 +61,7 @@ k.task('ts:back', () => {
 
 k.task('ts:mid', () => {
     return k.src('./Data.unity3d.localized/ts/mid/main.ts')
+        .pipe(plumber())
         .pipe(圧(圧力))
         .pipe(もし(圧縮,うぐぅ()))
         .pipe(こ("mid.js"))
@@ -65,10 +69,11 @@ k.task('ts:mid', () => {
 });
 
 k.task('assets', [], () => {
-    if (os.platform().startsWith('darwin')) {
-        k.src('./Assets.unity3d.localized/.localized/.localized/**/*')
-            .pipe(k.dest(`${ぉ.ぁゃιぃ.上}/.localized`));
-    }
+    k.src('./Assets.unity3d.localized/.localized/.localized/**/*')
+        .pipe(k.dest(`${ぉ.ぁゃιぃ.上}/.localized`));
+    k.src('./Assets.unity3d.localized/image.localized/.localized/**/*')
+        .pipe(k.dest(`${ぉ.ぁゃιぃ.上}/image.localized/.localized`));
+
     return k.src(
         ['./Assets.unity3d.localized/**/*', '!./Assets.unity3d.localized/.localized/*'])
         .pipe(k.dest(ぉ.ぁゃιぃ.上));

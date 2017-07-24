@@ -12,6 +12,9 @@
   "icons" : {
     "128": "icon.png"
   },
+  "web_accessible_resources": [
+    "image.localized/na.svg"
+  ],
   "browser_action": {
     "default_icon": "icon.png",
 	  "default_popup": "popup.html"

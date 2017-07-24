@@ -39,6 +39,7 @@ export class 原色 {
         new 鹿大量(/Zen([Ff]one|[Pp]ad)(\s+)?[28]([\.0-9]+)?/g, "ｲﾝﾃﾙｱﾝﾖﾖｲﾖ")
     ];
 
+
     constructor() {
     }
 
@@ -55,7 +56,7 @@ export class 原色 {
             差分 =　ま[0].length + ま.index;
         } while((ま = 正規.exec(元)) !== null);
         鮭 += 元.substr(差分);
-        
+
         return 鮭;
     }
 
