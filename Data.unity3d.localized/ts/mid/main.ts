@@ -150,25 +150,51 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
         return ｽﾄﾘﾝｸﾞｽﾞ.replace(/([a-zA-Z](?:\b|(?=[^a-zA-Z0-9\u00C0-\u00FF]))|[ァ-ヵーｦ-ﾟ]+)/g, "$1es");
     }
 
+    /**
+     * TODO: ﾊﾞﾝﾄﾞﾙ出来そうなﾌｫﾝﾄあったらこれにしたい
+    private ﾌｫﾝﾄねじ込み(ﾌｫﾄｼｮｯﾌﾟ: JQuery) {
+        let ﾌｫﾝﾄｶーｻーｻー = {'font-family': 'ふぉ'};
+        if (navigator.platform.match(/Mac/)) {
+            ﾌｫﾝﾄｶーｻーｻー["-webkit-font-smoothing"] ="none";
+        }
+        if (null === ﾌｫﾄｼｮｯﾌﾟ) {
+            $(document.getElementsByTagName("head")[0]).append(
+                $('<style>').text(
+                    "@font-face {font-family: 'ふぉ';" +
+                    `src: url(${chrome.extension.getURL('＜ﾌｫﾝﾄ置き場＞')});}`)
+            );
+            $(document).find('body').css(ﾌｫﾝﾄｶーｻーｻー);
+            return;
+        }
+        ﾌｫﾄｼｮｯﾌﾟ.css(ﾌｫﾝﾄｶーｻーｻー);
+    }
+    */
+
+    private ﾌｫﾝﾄ固定(ﾌｫﾄｼｮｯﾌﾟ: JQuery) {
+        let ﾌｫﾝﾄｶーｻーｻー = {
+            'font-family': '"MS Gothic","ＭＳ ゴシック","MS Mincho", "MS 明朝","Osaka"'};
+        if (navigator.platform.match(/Mac/)) {
+            ﾌｫﾝﾄｶーｻーｻー["-webkit-font-smoothing"] ="none";
+        }
+        if (null === ﾌｫﾄｼｮｯﾌﾟ) {
+            $(document).find('body').css(ﾌｫﾝﾄｶーｻーｻー);
+            return;
+        }
+        ﾌｫﾄｼｮｯﾌﾟ.css(ﾌｫﾝﾄｶーｻーｻー);
+    }
+
     private ｼﾓﾅｲｽﾞ(ﾌｫﾄｼｮｯﾌﾟ) {
         if (! this.ｲﾈーﾎﾞー) {
             return;
         }
-
         this.偉い人.disconnect();
 
         let ﾊﾞｯｷﾝｶﾞﾑ = this;
 
-        let ﾌｫﾝﾄｶーｻーｻー = {
-            'font-family': '"MS Gothic","ＭＳ ゴシック","MS Mincho", "MS 明朝","Times New Roman"'};
-        if (navigator.platform.match(/Mac/)) {
-            ﾌｫﾝﾄｶーｻーｻー["-webkit-font-smoothing"] ="none";
-        }
-
-        if (ﾌｫﾄｼｮｯﾌﾟ === null) {
+        if (null === ﾌｫﾄｼｮｯﾌﾟ) {
             ﾌｫﾄｼｮｯﾌﾟ = $(document).find(this.ｾﾚｸﾀー);
             if (this.ﾌｫﾝﾄ変更) {
-                $(document).find('body').css(ﾌｫﾝﾄｶーｻーｻー);
+                this.ﾌｫﾝﾄ固定(null);
             }
         }
         else {
@@ -176,7 +202,7 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
         }
 
         if (this.ﾌｫﾝﾄ変更) {
-            ﾌｫﾄｼｮｯﾌﾟ.css(ﾌｫﾝﾄｶーｻーｻー);
+            this.ﾌｫﾝﾄ固定(ﾌｫﾄｼｮｯﾌﾟ);
         }
 
         ﾌｫﾄｼｮｯﾌﾟ
