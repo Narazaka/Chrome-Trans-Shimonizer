@@ -159,8 +159,11 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
 
         let ﾊﾞｯｷﾝｶﾞﾑ = this;
 
-        const ﾌｫﾝﾄｶーｻーｻー = {
+        let ﾌｫﾝﾄｶーｻーｻー = {
             'font-family': '"MS Gothic","ＭＳ ゴシック","MS Mincho", "MS 明朝","Times New Roman"'};
+        if (navigator.platform.match(/Mac/)) {
+            ﾌｫﾝﾄｶーｻーｻー["-webkit-font-smoothing"] ="none";
+        }
 
         if (ﾌｫﾄｼｮｯﾌﾟ === null) {
             ﾌｫﾄｼｮｯﾌﾟ = $(document).find(this.ｾﾚｸﾀー);
