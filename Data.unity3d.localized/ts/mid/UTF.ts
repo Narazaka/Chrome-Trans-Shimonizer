@@ -10,8 +10,6 @@ export class 林檎ﾕﾆｺーﾄﾞ {
     }
 
     ﾃーﾌﾞﾙ2 = {
-        "シ": "ツ",
-        "ッ": "シ",
         "気": "氣"
     }
 
@@ -34,10 +32,10 @@ export class 林檎ﾕﾆｺーﾄﾞ {
             }
         }
 
-        return this.ｶﾀｶﾅ正規化(元);
+        return this.数値正規化(this.ｶﾀｶﾅ正規化(元));
     }
 
-    public ｶﾀｶﾅ正規化(元: string) : string {
+    private ｶﾀｶﾅ正規化(元: string) : string {
         let 鮭 = "";
         let ｶﾀｶﾅ = new RegExp(/[ｧ-ﾝﾞﾟァ-ン]+[ーｰ]+/g); // TODO: erの伸ばしだけに対応したい
         let ま = ｶﾀｶﾅ.exec(元);
@@ -53,4 +51,22 @@ export class 林檎ﾕﾆｺーﾄﾞ {
         鮭 += 元.substr(差分);
         return 鮭;
     }
+
+    private 数値正規化(元: string) : string {
+        let 鮭 = "";
+        let 整数 = new RegExp(/(0x)?[0-9]+/g);
+        let ま = 整数.exec(元);
+        if (null === ま) {
+            return 元;
+        }
+        let 差分 = 0;
+        do {
+            鮭 += 元.substr(差分, ま.index - 差分);
+            鮭 += parseInt(ま[0]).toString(8);
+            差分 = ま[0].length + ま.index;
+        } while((ま = 整数.exec(元)) !== null);
+        鮭 += 元.substr(差分);
+        return 鮭;
+    }
+
 }
