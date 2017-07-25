@@ -5,9 +5,11 @@
     <script src="lib/jquery.slim.min.js"></script>
     <script src="js/popup.js"></script>
     <style>
-      body { width: 300px; }
+      body { width: 300px; background-color: #eeeeee; }
       textarea { width: 299px; height: 300px;}
       #Shimonize {width: 99%;}
+      table {width:99%;border-width: 4px; border-style: outset;}
+      tr,td {border-width: 4px; border-style: groove;}
     </style>
 
   </head>
@@ -15,18 +17,17 @@
     <b>ｼﾓﾅｲｻﾞー</b><br>
       <label><input type="checkbox" id="enum">有効</label>
       <div id="java">
-        <div>
-          <label><input type="checkbox" id="emp">ｼﾓﾅｲｽﾞ</label>
-          <label><input type="checkbox" id="k">糞林語</label>
-          <label><input type="checkbox" id="rail">ﾚーﾙｽﾞ</label>
-          <label><input type="checkbox" id="yyy">ゆゆゆ</label>
-        </div>
-        <div>
-          <label><input type="checkbox" id="mac">ﾕﾆｺーﾄﾞ</label>
-          <label><input type="checkbox" id="primary">
+        <table>
+          <tr><td><label><input type="checkbox" id="emp">ｼﾓﾅｲｽﾞ</label></td></tr>
+          <tr><td><label><input type="checkbox" id="k">糞林語</label></td></tr>
+          <tr><td><label><input type="checkbox" id="rail">ﾚーﾙｽﾞ</label></td></tr>
+          <tr><td><label><input type="checkbox" id="yyy">ゆゆゆ</label></td></tr>
+          <tr><td><label><input type="checkbox" id="mac">ﾕﾆｺーﾄﾞ</label></td></tr>
+          <tr><td><label><input type="checkbox" id="primary">
             <span style="color:#c00000;">総</span><span style="color:#0000c0;">天</span><span style="color:#00b000;">然</span><span style="color:#cc9900;">色</span>
           </label>
-        </div>
+          </td></tr>
+        </table>
       </div>
   </body>
 </html>
