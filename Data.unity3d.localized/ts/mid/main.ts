@@ -16,7 +16,7 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
 
     private ﾀーｹﾞｯﾂ =
             ['div', 'h1', 'h2','h3','h4', 'dt', 'dd',
-            'th','td',
+            'th','td', 'pre',
             'p', 'b', 'a', 'span', 'em', 'strong', 'code',
             'li', 'ul', 'blockquote', 'label'];
     private ｾﾚｸﾀー: string;
@@ -153,7 +153,7 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
         let ﾊﾞｯｷﾝｶﾞﾑ = this;
 
         if (ﾌｫﾄｼｮｯﾌﾟ === null) {
-            ﾌｫﾄｼｮｯﾌﾟ = ぉ(this.ｾﾚｸﾀー);
+            ﾌｫﾄｼｮｯﾌﾟ = $(document).find(this.ｾﾚｸﾀー);
         }
         else {
             ﾌｫﾄｼｮｯﾌﾟ = ﾌｫﾄｼｮｯﾌﾟ.find(this.ｾﾚｸﾀー);
@@ -166,6 +166,7 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
         .html(function () {
             let 鳩 = ぉ(this);
             let 加工済 = 鳩.text();
+            console.log(加工済);
 
             if (ﾊﾞｯｷﾝｶﾞﾑ.ゆゆﾅｲｽﾞ) {
                 加工済 = ﾊﾞｯｷﾝｶﾞﾑ.ゆゆ式(加工済);

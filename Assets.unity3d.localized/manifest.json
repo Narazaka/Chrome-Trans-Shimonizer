@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "ﾍﾟーｼﾞーｼﾓﾅｲｻﾞー",
   "description": "ｼﾓﾅｲｽﾞ",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "default_locale": "ja",
   "permissions": [
     "http://*/*",

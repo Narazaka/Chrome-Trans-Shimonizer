@@ -1,5 +1,6 @@
 'use strict';
 export class 革新的でまったく新しいアッと驚く機能 {
+
     public static 実現(元: string) : string {
         let 鮭 = "";
         let 異国語 = new RegExp(/[a-zA-Z][a-zA-Z0-9_\s\-_.,]+/g);
@@ -21,4 +22,5 @@ export class 革新的でまったく新しいアッと驚く機能 {
 
         return 鮭;
     }
+
 }

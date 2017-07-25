@@ -32,7 +32,25 @@ export class 林檎ﾕﾆｺーﾄﾞ {
                     元 = 元.replace(ｼ, this.ﾃーﾌﾞﾙ2[ｼ]);
                }while(元.indexOf(ｼ) >= 0);
             }
-        }        
-        return 元;
+        }
+
+        return this.ｶﾀｶﾅ正規化(元);
+    }
+
+    public ｶﾀｶﾅ正規化(元: string) : string {
+        let 鮭 = "";
+        let ｶﾀｶﾅ = new RegExp(/[ｧ-ﾝﾞﾟァ-ン]+[ーｰ]+/g); // TODO: erの伸ばしだけに対応したい
+        let ま = ｶﾀｶﾅ.exec(元);
+        if (null === ま) {
+            return 元;
+        }
+        let 差分 = 0;
+        do {
+            鮭 += 元.substr(差分, ま.index - 差分);
+            鮭 += ま[0].substr(0, ま[0].indexOf('ー'));
+            差分 = ま[0].length + ま.index;
+        } while((ま = ｶﾀｶﾅ.exec(元)) !== null);
+        鮭 += 元.substr(差分);
+        return 鮭;
     }
 }
