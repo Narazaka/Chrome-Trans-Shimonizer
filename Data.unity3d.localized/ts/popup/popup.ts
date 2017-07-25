@@ -10,7 +10,8 @@ const ｲｴーｸﾄ = () => {
         ﾚーﾙｽﾞ: false,
         ゆゆゆ: false,
         ﾕﾆｺーﾄﾞ化: false,
-        原色: false
+        原色: false,
+        ﾌｫﾝﾄ変更: false
     };
     console.log("ｲｴーｸﾄ");
     chrome.storage.local.get(ｵﾌﾟﾁｵﾝ, (お) => {
@@ -21,6 +22,7 @@ const ｲｴーｸﾄ = () => {
         $('#yyy').prop('checked', お.ゆゆゆ);
         $('#mac').prop('checked', お.ﾕﾆｺーﾄﾞ化);
         $('#primary').prop('checked', お.原色);
+        $('#font').prop('checked', お.ﾌｫﾝﾄ変更);
 
         if (!お.ｲﾈーﾎﾞー) {
             $('#java input').prop('disabled', true);
@@ -89,6 +91,13 @@ const ｲｴーｸﾄ = () => {
         const checked = $(this).is(':checked');
 		const object = {
 	        原色: checked
+        };
+		chrome.storage.local.set(object, ()=>{});
+    });
+    $('#font').change(function() {
+        const checked = $(this).is(':checked');
+		const object = {
+	        ﾌｫﾝﾄ変更: checked
         };
 		chrome.storage.local.set(object, ()=>{});
 	})

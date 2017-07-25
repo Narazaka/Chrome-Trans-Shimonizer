@@ -29,6 +29,7 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
     private ﾚーﾙｽﾞｨーｽﾞ: boolean;
     private ゆゆﾅｲｽﾞ: boolean;
     private 原色化: boolean;
+    private ﾌｫﾝﾄ変更: boolean;
 
     private ｵﾌﾟﾁｵﾝ = {
         ｲﾈーﾎﾞー: true,
@@ -37,7 +38,8 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
         ﾕﾆｺーﾄﾞ化: false,
         ﾚーﾙｽﾞ: false,
         ゆゆゆ: false,
-        原色: false
+        原色: false,
+        ﾌｫﾝﾄ変更: false
     };
 
     constructor() {
@@ -97,6 +99,10 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
             if (変.原色) {
                 this.原色化 = 変.原色.newValue;
             }
+            if (変.ﾌｫﾝﾄ変更) {
+                this.ﾌｫﾝﾄ変更 = 変.ﾌｫﾝﾄ変更.newValue;
+            }
+
         });
     }
 
@@ -109,6 +115,7 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
             this.ゆゆﾅｲｽﾞ = ぁ.ゆゆゆ;
             this.ﾕﾆｺーﾄﾞ化 = ぁ.ﾕﾆｺーﾄﾞ化;
             this.原色化 = ぁ.原色;
+            this.ﾌｫﾝﾄ変更 = ぁ.ﾌｫﾝﾄ変更;
             if (鰆) {
                 鰆();
             }
@@ -152,12 +159,23 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
 
         let ﾊﾞｯｷﾝｶﾞﾑ = this;
 
+        const ﾌｫﾝﾄｶーｻーｻー = {
+            'font-family': '"MS Gothic","ＭＳ ゴシック","MS Mincho", "MS 明朝","Times New Roman"'};
+
         if (ﾌｫﾄｼｮｯﾌﾟ === null) {
             ﾌｫﾄｼｮｯﾌﾟ = $(document).find(this.ｾﾚｸﾀー);
+            if (this.ﾌｫﾝﾄ変更) {
+                $(document).find('body').css(ﾌｫﾝﾄｶーｻーｻー);
+            }
         }
         else {
             ﾌｫﾄｼｮｯﾌﾟ = ﾌｫﾄｼｮｯﾌﾟ.find(this.ｾﾚｸﾀー);
         }
+
+        if (this.ﾌｫﾝﾄ変更) {
+            ﾌｫﾄｼｮｯﾌﾟ.css(ﾌｫﾝﾄｶーｻーｻー);
+        }
+
         ﾌｫﾄｼｮｯﾌﾟ
         .contents()
         .filter(function () {
@@ -166,7 +184,7 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
         .html(function () {
             let 鳩 = ぉ(this);
             let 加工済 = 鳩.text();
-            console.log(加工済);
+            //console.log(加工済);
 
             if (ﾊﾞｯｷﾝｶﾞﾑ.ゆゆﾅｲｽﾞ) {
                 加工済 = ﾊﾞｯｷﾝｶﾞﾑ.ゆゆ式(加工済);
