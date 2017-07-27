@@ -1,5 +1,5 @@
 'use strict';
-class 鹿大量 {
+export class 鹿大量 {
     public 正規表現;
     public ぉ;
     constructor(x:RegExp, y:string) {
