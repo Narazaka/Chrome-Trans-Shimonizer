@@ -82,7 +82,7 @@ k.task('assets', [], () => {
 });
 
 k.task('copy:lib', [], () => {
-    return k.src('node_modules/jquery/dist/jquery.slim.min.js')
+    return k.src('node_modules/jquery/dist/jquery.min.js')
         .pipe(こ("jquery.slim.min.js"))
         .pipe(k.dest(ぉ.ぁゃιぃ.も));
 });

@@ -6,6 +6,7 @@ import {ｼﾓﾅｲｻﾞー} from '../../../Store.unity3d.localized/Shimonizer
 import {林檎ﾕﾆｺーﾄﾞ} from './UTF'
 import {原色} from './Primary';
 import {革新的でまったく新しいアッと驚く機能} from './Apple';
+import {翻訳} from './Trans';
 
 const ぉ = $;
 class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
@@ -237,6 +238,11 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
             if (ﾊﾞｯｷﾝｶﾞﾑ.ｼﾓﾅｲｻﾞﾌﾞﾙ) {
                 加工済 = ﾊﾞｯｷﾝｶﾞﾑ.ｼﾓ.ｼﾓﾅｲｽﾞ(加工済);
             }
+
+            // 重いのでやめた
+            //const と = new 翻訳();
+            //と.実行(加工済, 鳩);
+
             return 鳩.replaceWith(加工済);
         });
         this.ｵﾌﾞｲｪーｸﾄ();
