@@ -5,14 +5,20 @@ import {鹿大量} from './Primary';
 export class 革新的でまったく新しいアッと驚く機能 {
 
     ｹﾍﾞｯｸ州: 鹿大量[] = [
-        new 鹿大量(/Windows(\s*[0-9]+)?/g, "PC"),
+        new 鹿大量(/(Windows(\s*[0-9]+)?|([Gg][Nn][Uu]\/)?[Ll]inux)/g, "PC"),
+        new 鹿大量(/(yum|zypper|port|pkg|cinst|choco|apt|npm|pip)/g, "brew"),
+        new 鹿大量(/(Microsoft|マイクロソフト)/g, "M$"),
+        new 鹿大量(/Insider/g, "Public"),
+        new 鹿大量(/Preview/g, "Beta"),
+        new 鹿大量(/SSD/g, "ﾌﾗｯｼｭｽﾄﾚーｼﾞ"),
+        new 鹿大量(/Android(\s*[0-9a-zA-Z]+)?/g, "ｽﾏーﾄﾌｫﾝ"),
         new 鹿大量(/新/g, "革新"),
-        new 鹿大量(/([ウｳ][イィｲｨ][ルﾙ][スｽ]|([マﾏ][ルﾙ]|[スｽ][パﾊﾟ][イｲ]|[ラﾗ][ンﾝ][サｻ][ムﾑ])[ウｳ][エェｴｪ][アｧ])/g, ""),
+        new 鹿大量(/([ウｳ][イィｲｨ][ルﾙ][スｽ]|([マﾏ][ルﾙ]|[スｽ][パﾊﾟ][イｲ]|[ラﾗ][ンﾝ][サｻ][ムﾑ])[ウｳ][エェｴｪ][アｧ]|感染)/g, ""),
     ];
 
     public 実現(元: string) : string {
         let 鮭 = "";
-        let 異国語 = new RegExp(/[a-zA-Z][a-zA-Z0-9_\s\-_.,]{2,}/g);
+        let 異国語 = new RegExp(/[a-zA-Z][a-zA-Z0-9\s_\-.,]{2,}/g);
         元 = this.変換(元);
 
         let ま = 異国語.exec(元);

@@ -187,10 +187,10 @@ class ﾍﾟーｼﾞｼﾓﾅｲｻﾞー {
     }
 
     private ｼﾓﾅｲｽﾞ(ﾌｫﾄｼｮｯﾌﾟ) {
+        this.偉い人.disconnect();
         if (! this.ｲﾈーﾎﾞー) {
             return;
         }
-        this.偉い人.disconnect();
 
         let ﾊﾞｯｷﾝｶﾞﾑ = this;
 
